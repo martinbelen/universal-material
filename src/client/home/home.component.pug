@@ -1,0 +1,15 @@
+div(class='home') Home component
+  strong Async data calls return value:
+  pre {{ data | json }}
+  blockquote {{ data.data }}
+
+div(class='demo-toolbar')
+  p
+    md-toolbar
+      span Default Toolbar
+      span(class='demo-fill-remaining')
+
+  p
+    md-toolbar(color='primary')
+      span Primary Toolbar
+      span(class='demo-fill-remaining')
