@@ -3,6 +3,7 @@
 /node_modules
 /typings
 /tsd_typings/
+/ts-node/
 npm-debug.log
 
 /dist/

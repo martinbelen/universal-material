@@ -1,0 +1,8 @@
+{
+  "apps" : [{
+    "name"        : "am-checkout",
+    "script"      : "/application/server/index.js",
+		"instances": "max",
+		"max_memory_restart": "2G"
+  }]
+}

@@ -1,0 +1,18 @@
+version: '2'
+services:
+  reverse_proxy:
+    image: docker.almundo.com:5000/almundo/am-backoffice/nginx:${VERSION}
+    links:
+      - node:nginx_backend
+    environment:
+      - NGINX_BACKEND_PORT=5001
+    expose:
+      - "80"
+    volumes_from:
+      - node
+  node:
+    image: docker.almundo.com:5000/almundo/am-backoffice/node:${VERSION}
+    environment:
+      - ENV=${ENV}
+    expose:
+      - "5001"

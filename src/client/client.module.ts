@@ -4,9 +4,9 @@ import { RouterModule } from '@angular/router';
 import { UniversalModule, isBrowser, isNode, AUTO_PREBOOT } from 'angular2-universal/browser'; // for AoT we need to manually split universal packages
 import { IdlePreload, IdlePreloadModule } from '@angularclass/idle-preload';
 
-import { AppModule, AppComponent } from './client/app.module';
-import { SharedModule } from './client/shared/shared.module';
-import { CacheService } from './client/shared/cache.service';
+import { AppModule, AppComponent } from './app.module';
+import { SharedModule } from './shared/shared.module';
+import { CacheService } from './shared/cache.service';
 
 // Will be merged into @angular/platform-browser in a later release
 // see https://github.com/angular/angular/pull/12322

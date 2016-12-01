@@ -1,26 +1,26 @@
-var webpack = require('webpack');
-var path = require('path');
-var clone = require('js.clone');
-var webpackMerge = require('webpack-merge');
+const webpack = require('webpack');
+const path = require('path');
+const clone = require('js.clone');
+const webpackMerge = require('webpack-merge');
+const V8LazyParseWebpackPlugin = require('v8-lazy-parse-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
 
-export var commonPlugins = [
+const environment = process.env.NODE_ENV || 'development';
+
+export const commonPlugins = [
   new webpack.ContextReplacementPlugin(
-    // The (\\|\/) piece accounts for path separators in *nix and Windows
     /angular(\\|\/)core(\\|\/)src(\\|\/)linker/,
-    root('./src'),
-    {
-      // your Angular Async Route paths relative to this root directory
-    }
+    root('./src/server/server'),
+    {}
   ),
 
-  // Loader options
   new webpack.LoaderOptionsPlugin({
-
-  }),
-
+    minimize: (environment === "development")? false : true,
+    debug: (environment === "development")? true : false
+  })
 ];
+
 export var commonConfig = {
-  // https://webpack.github.io/docs/configuration.html#devtool
   devtool: 'source-map',
   resolve: {
     extensions: ['.ts', '.js', '.json'],
@@ -33,7 +33,6 @@ export var commonConfig = {
   },
   module: {
     rules: [
-      // TypeScript
       { test: /\.ts$/,   use: ['awesome-typescript-loader', 'angular2-template-loader'] },
       { test: /\.scss$/,  use: ['raw-loader', 'sass-loader'], exclude: /node_modules/ },
       { test: /\.(pug|jade)$/, loader: 'pug-html-loader' },
@@ -55,11 +54,37 @@ export var commonConfig = {
 
 // Client.
 export var clientPlugins = [
+  new CompressionPlugin({
+     asset: "[path].gz[query]",
+     algorithm: "gzip",
+     test: /\.js$|\.css$|\.pug$|\.html$/,
+     threshold: 10240,
+     minRatio: 0.8
+  }),
 
+  new webpack.optimize.UglifyJsPlugin({
+    output: {
+      comments: false
+    },
+    compress: {
+      warnings: false,
+      conditionals: true,
+      unused: true,
+      comparisons: true,
+      sequences: true,
+      dead_code: true,
+      evaluate: true,
+      if_return: true,
+      join_vars: true,
+      negate_iife: false
+    },
+    sourceMap: true
+  })
 ];
+
 export var clientConfig = {
   target: 'web',
-  entry: './src/client',
+  entry: './src/client/client',
   output: {
     path: root('dist/client')
   },
@@ -76,11 +101,30 @@ export var clientConfig = {
 
 // Server.
 export var serverPlugins = [
-
+  new webpack.optimize.UglifyJsPlugin({
+    mangle: false,
+    output: {
+      comments: false
+    },
+    compress: {
+      warnings: false,
+      conditionals: true,
+      unused: true,
+      comparisons: true,
+      sequences: true,
+      dead_code: true,
+      evaluate: true,
+      if_return: true,
+      join_vars: true,
+      negate_iife: false
+    },
+    sourceMap: true
+  })
 ];
+
 export var serverConfig = {
   target: 'node',
-  entry: './src/server', // use the entry file of the node server if everything is ts rather than es5
+  entry: './src/server/server',
   output: {
     filename: 'index.js',
     path: root('dist/server'),
@@ -92,7 +136,7 @@ export var serverConfig = {
     ],
   },
   externals: includeClientPackages(
-   [ /@angularclass|@angular|angular2-|ng2-|ng-|@ng-|angular-|@ngrx|ngrx-|@angular2|ionic|-angular2|-ng2|-ng/ ]
+   [ /@angularclass|angular2-universal-polyfills|@angular|angular2-|ng2-|ng-|@ng-|angular-|@ngrx|ngrx-|@angular2|ionic|-angular2|-ng2|-ng/ ]
   ),
   node: {
     global: true,
@@ -111,8 +155,6 @@ export default [
   // Server
   webpackMerge(clone(commonConfig), serverConfig, { plugins: serverPlugins.concat(commonPlugins) })
 ];
-
-
 
 
 // Helpers

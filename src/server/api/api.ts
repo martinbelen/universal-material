@@ -2,11 +2,11 @@ const util = require('util');
 const {Router} = require('express');
 
 // Our API for demos only
-import {fakeDataBase} from './db';
-import {fakeDemoRedisCache} from './cache';
+import {fakeDataBase} from '../db/db';
+import {fakeDemoRedisCache} from '../cache/cache';
 
 // you would use cookies/token etc
-const USER_ID = 'f9d98cf1-1b96-464e-8755-bcc2a5c09077'; // hardcoded as an example
+const USER_ID = 'f9d98cf1-1b96-464e-8755-bcc2a5c09sds077';
 
 // Our API for demos only
 export function serverApi(req, res) {
