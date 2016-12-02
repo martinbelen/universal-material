@@ -3,12 +3,9 @@ import { Component, Inject, ChangeDetectionStrategy, ViewEncapsulation } from '@
 @Component({
   changeDetection: ChangeDetectionStrategy.Default,
   encapsulation: ViewEncapsulation.Emulated,
-  selector: 'about',
-  template: 'About component'
+  selector: 'extra',
+  styleUrls: [ './extra.component.scss' ],
+  templateUrl: './extra.component.pug'
 })
-export class AboutComponent {
-  constructor(@Inject('req') req: any) {
-    // console.log('req',  req)
-
-  }
+export class ExtraComponent {
 }

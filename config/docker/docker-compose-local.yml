@@ -6,8 +6,8 @@ services:
       - node:nginx_backend
     environment:
       - NGINX_BACKEND_PORT=3000
-    expose:
-      - "80"
+    ports:
+      - 8080:8080
     volumes_from:
       - node
   node:

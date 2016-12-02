@@ -1,17 +1,12 @@
 nav
   a(routerLinkActive='router-link-active' routerLink='home') Home
-  a(routerLinkActive='router-link-active' routerLink='about') About
-  a(routerLinkActive='router-link-active' routerLink='todo') Todo
-  a(routerLinkActive='router-link-active' routerLink='lazy') Lazy
+  a(routerLinkActive='router-link-active' routerLink='material') Material
+  a(routerLinkActive='router-link-active' routerLink='extra') Extra
 div(class='hero-universal')
   div(class='inner-hero')
     div
-      span(xLarge) Universal JavaScript {{ title }}!
-    
-    p Two-way binding: <input type="text" [value]="title" (input)="title = $event.target.value">
-    br
-    br
+      h1
+        span(xLarge) Almundo Demo {{ title }}!
 
-    strong Router-outlet:
     main
       router-outlet

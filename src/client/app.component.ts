@@ -26,5 +26,5 @@ export class XLargeDirective {
   templateUrl: './app.component.pug'
 })
 export class AppComponent {
-  title = 'ftw';
+  title = 'Backoffice';
 }

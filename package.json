@@ -23,7 +23,11 @@
     "debug:build": "node-nightly --inspect --debug-brk node_modules/webpack/bin/webpack.js",
     "debug:build:prod": "node-nightly --inspect --debug-brk node_modules/webpack/bin/webpack.js  --config webpack.prod.config.ts",
     "debug": "node --debug-brk dist/server/index.js",
-    "docker": "./docker_run.sh"
+    "docker": "./docker_run.sh",
+    "protractor": "protractor",
+    "protractor:install": "./node_modules/protractor/bin/webdriver-manager update",
+    "e2e:live": "npm run e2e -- --elementExplorer",
+    "e2e": "npm run protractor"
   },
   "dependencies": {
     "@angular/common": "~2.1.2",
@@ -83,6 +87,7 @@
     "imports-loader": "^0.6.5",
     "json-loader": "^0.5.4",
     "memory-cache": "^0.1.6",
+    "mocha": "^3.2.0",
     "nodemon": "^1.10.0",
     "protractor": "^4.0.11",
     "raw-loader": "^0.5.1",

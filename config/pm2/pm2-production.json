@@ -1,8 +1,13 @@
 {
   "apps" : [{
-    "name"        : "am-checkout",
+    "name"        : "am-backoffice",
     "script"      : "/application/server/index.js",
-		"instances": "max",
-		"max_memory_restart": "2G"
+		"watch": [
+			"/application/server", 
+			"/application/client"
+		],
+		"instances": 4,
+		"max_memory_restart": "2G",
+    "node_args": ["--debug=5860"]
   }]
 }

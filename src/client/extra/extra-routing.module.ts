@@ -1,13 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-
-import { TodoComponent } from './todo.component';
+import { ExtraComponent } from './extra.component';
 
 @NgModule({
   imports: [
     RouterModule.forChild([
-      { path: 'todo', component: TodoComponent }
+      { path: 'extra', component: ExtraComponent }
     ])
   ]
 })
-export class TodoRoutingModule { }
+export class ExtraRoutingModule { }

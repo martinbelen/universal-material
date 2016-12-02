@@ -1,25 +1,7 @@
-$red:red;
-blockquote {
-  border-left:5px #158126 solid;
-  background:#fff;
-  padding:20px 20px 20px 46px;
-  color: $red;
+.home{
+  color:black;
 }
-blockquote::before {
-  left: 1em;
-}
-
-.demo-toolbar {
-  padding: 6px;
-
-  .demo-toolbar-icon {
-    padding: 0 14px;
-  }
-
-  .demo-fill-remaining {
-    flex: 1 1 auto;
-  }
-}
-.demo-icon md-icon.green {
-  color: green;
+.readme{
+  margin-top:20px;
+  display:inline-block;
 }

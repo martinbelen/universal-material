@@ -33,7 +33,7 @@ export var commonConfig = {
   },
   module: {
     rules: [
-      { test: /\.ts$/,   use: ['awesome-typescript-loader', 'angular2-template-loader'] },
+      { test: /\.ts$/,   use: ['awesome-typescript-loader', 'angular2-template-loader'], exclude: [/\.(spec|e2e)\.ts$/] },
       { test: /\.scss$/,  use: ['raw-loader', 'sass-loader'], exclude: /node_modules/ },
       { test: /\.(pug|jade)$/, loader: 'pug-html-loader' },
       { test: /\.css$/,  use: 'raw-loader' },

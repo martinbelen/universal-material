@@ -1,0 +1,10 @@
+$red:red;
+blockquote {
+  border-left:5px #158126 solid;
+  background:#fff;
+  padding:20px 20px 20px 46px;
+  color: $red;
+}
+blockquote::before {
+  left: 1em;
+}

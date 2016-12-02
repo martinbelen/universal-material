@@ -1,6 +1,6 @@
 {
   "apps" : [{
-    "name"        : "am-checkout",
+    "name"        : "am-backoffice",
     "script"      : "/application/server/index.js",
 		"watch": [
 			"/application/server", 
@@ -8,14 +8,6 @@
 		],
 		"instances": 4,
 		"max_memory_restart": "2G",
-    "node_args": ["--debug=5860"],
-    "ignoreWatch" : [
-			"/application/.git",
-			"/application/.tmp",
-			"/application/.idea",
-			"/application/config",
-			"/application/node_modules", 
-			"/application/build"
-			]
+    "node_args": ["--debug=5860"]
   }]
 }
